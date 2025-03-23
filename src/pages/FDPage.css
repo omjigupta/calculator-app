@@ -1,128 +1,197 @@
 .fd-page {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Ensure both cards stretch to the same height */
+  padding: 20px;
+  background-color: #f5f5f5;
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px; /* Add gap between cards */
+}
+
+.details-card,
+.calculator-card {
+  flex: 1;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid #28a745;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-card {
+  max-width: 45%; /* Adjust width for details card */
+}
+
+.calculator-card {
+  max-width: 45%; /* Adjust width for calculator card */
+  overflow-y: auto; /* Make the calculator card scrollable if content overflows */
+  padding-right: 20px; /* Add right padding for better spacing */
+}
+
+.calculator-title {
+  text-align: center;
+  color: #28a745;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 16px;
+}
+
+.input-group .value {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.input-group input[type='range'] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.input-group input[type='range']:hover {
+  opacity: 1;
+}
+
+.input-group input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #28a745;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.input-group input[type='range']::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #28a745;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: #777;
+  font-size: 14px;
+}
+
+.toggle-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-buttons button.active {
+  background-color: #28a745;
+  color: white;
+}
+
+.results {
+  margin-top: 30px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.result-item span:first-child {
+  font-weight: bold;
+}
+
+.result-item span:last-child {
+  color: #28a745;
+}
+
+/* Partitioned Visualization (Pie Chart) */
+.visualization {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  background: #f0f0f0; /* Fallback color */
+}
+
+.pie-segment {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  clip-path: polygon(50% 50%, 100% 50%, 100% 0);
+}
+
+.pie-labels {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pie-labels .label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.pie-labels .label.principal {
+  color: #007bff; /* Blue for Principal */
+}
+
+.pie-labels .label.interest {
+  color: #28a745; /* Green for Interest */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fd-page {
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    padding: 20px;
-    background-color: white;
-    font-family: 'Arial', sans-serif;
   }
-  
-  .card {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+
+  .details-card,
+  .calculator-card {
+    max-width: 100%;
     width: 100%;
-  }
-  
-  .calculator-title {
-    text-align: center;
-    color: #333;
     margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
   }
-  
-  .input-group {
-    margin-bottom: 25px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 10px;
-    color: #555;
-    font-size: 16px;
-  }
-  
-  .input-group .value {
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  .input-group input[type='range'] {
-    width: 100%;
-    -webkit-appearance: none;
-    height: 8px;
-    background: #e0e0e0;
-    border-radius: 5px;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
-  
-  .input-group input[type='range']:hover {
-    opacity: 1;
-  }
-  
-  .input-group input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #007bff;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .input-group input[type='range']::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #007bff;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .slider-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-    color: #777;
-    font-size: 14px;
-  }
-  
-  .toggle-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .toggle-buttons button {
-    padding: 10px 20px;
-    background-color: #e0e0e0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .toggle-buttons button.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .results {
-    margin-top: 30px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .result-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .result-item span:first-child {
-    font-weight: bold;
-  }
-  
-  .result-item span:last-child {
-    color: #007bff;
-  }
+}
