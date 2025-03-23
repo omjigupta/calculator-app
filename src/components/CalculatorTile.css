@@ -1,0 +1,25 @@
+.calculator-tile {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #007bff; /* Blue border */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Blue shadow */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+  }
+  
+  .calculator-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.5); /* Stronger blue shadow on hover */
+  }
+  
+  .calculator-tile h3 {
+    margin: 0 0 10px;
+    color: var(--primary-color);
+  }
+  
+  .calculator-tile p {
+    margin: 0;
+    color: var(--text-color);
+  }

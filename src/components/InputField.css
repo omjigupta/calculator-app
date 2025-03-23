@@ -1,0 +1,18 @@
+.input-field {
+    margin-bottom: 15px;
+  }
+  
+  .input-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+  }
+  
+  .input-field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+  }
