@@ -1,76 +1,78 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import CalculatorTile from '../components/CalculatorTile';
+import { FaHome, FaPiggyBank, FaChartLine, FaMoneyBillAlt, FaCoins, FaUniversity, FaBalanceScale, FaHandHoldingUsd, FaChartPie, FaWallet, FaRupeeSign } from 'react-icons/fa'; // Import icons
 import './HomePage.css';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import InputField from '../components/InputField';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const calculators = [
     {
       title: 'SIP',
       description: 'Calculate how much you need to save or how much you will accumulate with your SIP',
       path: '/sip',
+      icon: <FaPiggyBank size={40} color="#007bff" />, // Icon for SIP
     },
     {
-        title: 'Home Loan',
-        description: 'Calculate your home loan EMI and interest',
-        path: '/home-loan',
-      },
-    {
-      title: 'SSY',
-      description: 'Calculate returns for Sukanya Samriddhi Yojana (SSY) as per your investment',
-      path: '/ssy',
+      title: 'Home Loan EMI',
+      description: 'Calculate your monthly EMI for a home loan',
+      path: '/home-loan',
+      icon: <FaHome size={40} color="#007bff" />, // Icon for Home Loan
     },
     {
-      title: 'RD',
-      description: 'Check returns on your Recurring Deposit (RD) in just a few clicks',
-      path: '/rd',
+      title: 'Mutual Fund Returns',
+      description: 'Calculate returns on your mutual fund investments',
+      path: '/mutual-fund',
+      icon: <FaChartLine size={40} color="#007bff" />, // Icon for Mutual Fund
     },
     {
-      title: 'Lumpsum',
-      description: 'Calculate returns for lumpsum investments to achieve your financial goals',
-      path: '/lumpsum',
+      title: 'Fixed Deposit',
+      description: 'Check returns on your fixed deposits (FDs) without any hassle',
+      path: '/fd',
+      icon: <FaCoins size={40} color="#007bff" />, // Icon for Fixed Deposit
     },
     {
       title: 'PPF',
       description: 'Calculate your returns on Public Provident Fund (PPF)',
       path: '/ppf',
-    },
-    {
-      title: 'NPS',
-      description: 'Calculate returns for your National Pension Scheme (NPS)',
-      path: '/nps',
-    },
-    {
-      title: 'SWP',
-      description: 'Calculate your final amount with Systematic Withdrawal Plans (SWP)',
-      path: '/swp',
-    },
-    {
-      title: 'EPF',
-      description: 'Calculate returns for your Employee’s Provident Fund (EPF)',
-      path: '/epf',
-    },
-    {
-      title: 'HRA',
-      description: 'Calculate your House Rent Allowance (HRA)',
-      path: '/hra',
-    },
-    {
-      title: 'MF',
-      description: 'Calculate the returns on your mutual fund investments',
-      path: '/mf',
-    },
-    {
-      title: 'FD',
-      description: 'Check returns on your fixed deposits (FDs) without any hassle',
-      path: '/fd',
+      icon: <FaUniversity size={40} color="#007bff" />, // Icon for PPF
     },
     {
       title: 'Retirement',
       description: 'Calculate how much you need for a relaxed retirement',
       path: '/retirement',
+      icon: <FaBalanceScale size={40} color="#007bff" />, // Icon for Retirement
+    },
+    {
+      title: 'Income Tax',
+      description: 'Calculate your income tax liability',
+      path: '/income-tax',
+      icon: <FaMoneyBillAlt size={40} color="#007bff" />, // Icon for Income Tax
+    },
+    {
+      title: 'Recurring Deposit',
+      description: 'Check returns on your Recurring Deposit (RD) in just a few clicks',
+      path: '/rd',
+      icon: <FaHandHoldingUsd size={40} color="#007bff" />, // Icon for RD
+    },
+    {
+      title: 'Lumpsum',
+      description: 'Calculate returns for lumpsum investments to achieve your financial goals',
+      path: '/lumpsum',
+      icon: <FaChartPie size={40} color="#007bff" />, // Icon for Lumpsum
+    },
+    {
+      title: 'Savings',
+      description: 'Calculate your savings and future value',
+      path: '/savings',
+      icon: <FaWallet size={40} color="#007bff" />, // Icon for Savings
+    },
+    {
+      title: 'Currency Converter',
+      description: 'Convert currencies with real-time exchange rates',
+      path: '/currency-converter',
+      icon: <FaRupeeSign size={40} color="#007bff" />, // Icon for Currency Converter
     },
   ];
 
@@ -84,6 +86,7 @@ const HomePage = () => {
             title={calculator.title}
             description={calculator.description}
             path={calculator.path}
+            icon={calculator.icon} // Pass the icon as a prop
           />
         ))}
       </div>
