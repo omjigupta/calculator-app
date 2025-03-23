@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import InputField from '../components/InputField';
-import Button from '../components/Button';
 import Card from '../components/Card';
 import './SIPPage.css';
 
 const SIPPage = () => {
-  const [monthlyInvestment, setMonthlyInvestment] = useState(25000);
+  // Default values
+  const [monthlyInvestment, setMonthlyInvestment] = useState(20000);
   const [expectedReturnRate, setExpectedReturnRate] = useState(12);
   const [timePeriod, setTimePeriod] = useState(10);
-  const [investedAmount, setInvestedAmount] = useState(0);
-  const [estimatedReturns, setEstimatedReturns] = useState(0);
-  const [totalValue, setTotalValue] = useState(0);
 
+  // Calculate SIP
   const calculateSIP = () => {
     const months = timePeriod * 12;
     const monthlyRate = expectedReturnRate / 12 / 100;
@@ -22,56 +19,94 @@ const SIPPage = () => {
     const invested = monthlyInvestment * months;
     const returns = futureValue - invested;
 
-    setInvestedAmount(invested.toFixed(2));
-    setEstimatedReturns(returns.toFixed(2));
-    setTotalValue(futureValue.toFixed(2));
+    return {
+      investedAmount: invested.toLocaleString(),
+      estimatedReturns: returns.toLocaleString(),
+      totalValue: futureValue.toLocaleString(),
+    };
   };
 
-  // Automatically calculate when any input changes
-  React.useEffect(() => {
-    calculateSIP();
-  }, [monthlyInvestment, expectedReturnRate, timePeriod]);
+  const { investedAmount, estimatedReturns, totalValue } = calculateSIP();
 
   return (
     <div className="sip-page">
       <Card>
-        <h2>SIP Calculator</h2>
+        <h2 className="calculator-title">SIP Calculator</h2>
+
+        {/* Monthly Investment Slider */}
         <div className="input-group">
-          <InputField
-            label="Monthly Investment (₹):"
+          <label>
+            Monthly Investment (₹):{' '}
+            <span className="value">{monthlyInvestment.toLocaleString()}</span>
+          </label>
+          <input
+            type="range"
+            min="500"
+            max="2000000"
+            step="500"
             value={monthlyInvestment}
             onChange={(e) => setMonthlyInvestment(parseFloat(e.target.value))}
           />
+          <div className="slider-labels">
+            <span>₹500</span>
+            <span>₹20,00,000</span>
+          </div>
         </div>
+
+        {/* Expected Return Rate Slider */}
         <div className="input-group">
-          <InputField
-            label="Expected Return Rate (p.a %):"
+          <label>
+            Expected Return Rate (p.a %):{' '}
+            <span className="value">{expectedReturnRate}</span>
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="30"
+            step="0.1"
             value={expectedReturnRate}
             onChange={(e) => setExpectedReturnRate(parseFloat(e.target.value))}
           />
+          <div className="slider-labels">
+            <span>1%</span>
+            <span>30%</span>
+          </div>
         </div>
+
+        {/* Time Period Slider */}
         <div className="input-group">
-          <InputField
-            label="Time Period (Years):"
+          <label>
+            Time Period (Years): <span className="value">{timePeriod}</span>
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="30"
+            step="1"
             value={timePeriod}
             onChange={(e) => setTimePeriod(parseFloat(e.target.value))}
           />
+          <div className="slider-labels">
+            <span>1 Year</span>
+            <span>30 Years</span>
+          </div>
         </div>
+
+        {/* Results */}
         <div className="results">
-          <div>
-            <span>Invested Amount:</span>
+          <div className="result-item">
+            <span>Invested Amount</span>
             <span>₹{investedAmount}</span>
           </div>
-          <div>
-            <span>Est. Returns:</span>
+          <div className="result-item">
+            <span>Est. Returns</span>
             <span>₹{estimatedReturns}</span>
           </div>
-          <div>
-            <span>Total Value:</span>
+          <div className="result-item">
+            <span>Total Value</span>
             <span>₹{totalValue}</span>
           </div>
         </div>
-        <Button className="invest-now-button">INVEST NOW</Button>
       </Card>
     </div>
   );
