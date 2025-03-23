@@ -14,12 +14,14 @@ import MFPage from './pages/MFPage';
 import FDPage from './pages/FDPage';
 import RetirementPage from './pages/RetirementPage';
 import HomeLoanPage from './pages/HomeLoanPage';
+import SearchResultsPage from './pages/SearchResultsPage'; // Import the search results page
 import './styles/global.css';
 
 function App() {
   return (
     <Routes> {/* Use Routes directly without BrowserRouter */}
       <Route path="/" element={<HomePage />} />
+      <Route path="/search" element={<SearchResultsPage />} /> {/* Add search route */}
       <Route path="/sip" element={<SIPPage />} />
       <Route path="/home-loan" element={<HomeLoanPage />} />
       <Route path="/ssy" element={<SSYPage />} />

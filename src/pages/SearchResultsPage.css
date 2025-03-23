@@ -1,0 +1,35 @@
+.search-results-page {
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+  }
+  
+  .search-results-page h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .tile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limit the maximum width */
+  }
+  
+  /* Style for fewer results (1 or 2) */
+  .tile-container.few-results {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider tiles for fewer results */
+    max-width: 800px; /* Reduce max width for fewer results */
+  }
+  
+  /* No results message */
+  .search-results-page p {
+    font-size: 18px;
+    color: #555;
+  }

@@ -1,100 +1,109 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import CalculatorTile from '../components/CalculatorTile';
-import { FaHome, FaPiggyBank, FaChartLine, FaMoneyBillAlt, FaCoins, FaUniversity, FaBalanceScale, FaHandHoldingUsd, FaChartPie, FaWallet, FaRupeeSign } from 'react-icons/fa'; // Import icons
-import './HomePage.css';
-import Search from '../components/Search'; // Import the search component
+import './SearchResultsPage.css';
 
+const SearchResultsPage = () => {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get('q') || '';
 
-const HomePage = () => {
-  const navigate = useNavigate();
-
+  // List of all calculators
   const calculators = [
     {
       title: 'SIP',
       description: 'Calculate how much you need to save or how much you will accumulate with your SIP',
       path: '/sip',
-      icon: <FaPiggyBank size={40} color="#007bff" />, // Icon for SIP
+      icon: '💰',
     },
     {
       title: 'Home Loan EMI',
       description: 'Calculate your monthly EMI for a home loan',
       path: '/home-loan',
-      icon: <FaHome size={40} color="#007bff" />, // Icon for Home Loan
+      icon: '🏠',
     },
     {
       title: 'Mutual Fund Returns',
       description: 'Calculate returns on your mutual fund investments',
       path: '/mutual-fund',
-      icon: <FaChartLine size={40} color="#007bff" />, // Icon for Mutual Fund
+      icon: '📈',
     },
     {
       title: 'Fixed Deposit',
       description: 'Check returns on your fixed deposits (FDs) without any hassle',
       path: '/fd',
-      icon: <FaCoins size={40} color="#007bff" />, // Icon for Fixed Deposit
+      icon: '💳',
     },
     {
       title: 'PPF',
       description: 'Calculate your returns on Public Provident Fund (PPF)',
       path: '/ppf',
-      icon: <FaUniversity size={40} color="#007bff" />, // Icon for PPF
+      icon: '🏦',
     },
     {
       title: 'Retirement',
       description: 'Calculate how much you need for a relaxed retirement',
       path: '/retirement',
-      icon: <FaBalanceScale size={40} color="#007bff" />, // Icon for Retirement
+      icon: '👵',
     },
     {
       title: 'Income Tax',
       description: 'Calculate your income tax liability',
       path: '/income-tax',
-      icon: <FaMoneyBillAlt size={40} color="#007bff" />, // Icon for Income Tax
+      icon: '💸',
     },
     {
       title: 'Recurring Deposit',
       description: 'Check returns on your Recurring Deposit (RD) in just a few clicks',
       path: '/rd',
-      icon: <FaHandHoldingUsd size={40} color="#007bff" />, // Icon for RD
+      icon: '💹',
     },
     {
       title: 'Lumpsum',
       description: 'Calculate returns for lumpsum investments to achieve your financial goals',
       path: '/lumpsum',
-      icon: <FaChartPie size={40} color="#007bff" />, // Icon for Lumpsum
+      icon: '💼',
     },
     {
       title: 'Savings',
       description: 'Calculate your savings and future value',
       path: '/savings',
-      icon: <FaWallet size={40} color="#007bff" />, // Icon for Savings
+      icon: '💵',
     },
     {
       title: 'Currency Converter',
       description: 'Convert currencies with real-time exchange rates',
       path: '/currency-converter',
-      icon: <FaRupeeSign size={40} color="#007bff" />, // Icon for Currency Converter
+      icon: '💱',
     },
   ];
 
+  // Filter calculators based on the search query
+  const filteredCalculators = calculators.filter(
+    (calculator) =>
+      calculator.title.toLowerCase().includes(query.toLowerCase()) ||
+      calculator.description.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
-    <div className="home-page">
-      <h1>Calculators</h1>
-      <Search /> {/* Add the search bar */}
-      <div className="tile-container">
-        {calculators.map((calculator, index) => (
-          <CalculatorTile
-            key={index}
-            title={calculator.title}
-            description={calculator.description}
-            path={calculator.path}
-            icon={calculator.icon} // Pass the icon as a prop
-          />
-        ))}
+    <div className="search-results-page">
+      <h2>Search Results for "{query}"</h2>
+      <div className={`tile-container ${filteredCalculators.length <= 2 ? 'few-results' : ''}`}>
+        {filteredCalculators.length > 0 ? (
+          filteredCalculators.map((calculator, index) => (
+            <CalculatorTile
+              key={index}
+              title={calculator.title}
+              description={calculator.description}
+              path={calculator.path}
+              icon={calculator.icon}
+            />
+          ))
+        ) : (
+          <p>No results found.</p>
+        )}
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default SearchResultsPage;
