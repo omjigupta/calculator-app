@@ -1,17 +1,21 @@
 .home-page {
     padding: 20px;
     text-align: center;
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--background-color);
+    min-height: 100vh; /* Use min-height instead of height */
+    background-color: white; /* White background */
+    font-family: 'Arial', sans-serif;
   }
   
   .home-page h1 {
     margin-bottom: 20px;
-    color: var(--primary-color);
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: sticky; /* Make the heading sticky */
+    top: 0; /* Stick to the top */
+    background-color: white; /* Match the background color */
+    z-index: 10; /* Ensure it stays above other content */
+    padding: 10px 0; /* Add some padding */
   }
   
   .tile-container {
@@ -21,6 +25,7 @@
     width: 90%; /* Use 90% of the screen width */
     max-width: 1200px; /* Maximum width for the grid */
     margin: 0 auto; /* Center the grid */
+    padding-bottom: 20px; /* Add padding at the bottom */
   }
   
   .calculator-tile {

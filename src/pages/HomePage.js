@@ -13,6 +13,11 @@ const HomePage = () => {
       path: '/sip',
     },
     {
+        title: 'Home Loan',
+        description: 'Calculate your home loan EMI and interest',
+        path: '/home-loan',
+      },
+    {
       title: 'SSY',
       description: 'Calculate returns for Sukanya Samriddhi Yojana (SSY) as per your investment',
       path: '/ssy',

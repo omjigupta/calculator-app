@@ -13,6 +13,7 @@ import HRAPage from './pages/HRAPage';
 import MFPage from './pages/MFPage';
 import FDPage from './pages/FDPage';
 import RetirementPage from './pages/RetirementPage';
+import HomeLoanPage from './pages/HomeLoanPage';
 import './styles/global.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     <Routes> {/* Use Routes directly without BrowserRouter */}
       <Route path="/" element={<HomePage />} />
       <Route path="/sip" element={<SIPPage />} />
+      <Route path="/home-loan" element={<HomeLoanPage />} />
       <Route path="/ssy" element={<SSYPage />} />
       <Route path="/rd" element={<RDPage />} />
       <Route path="/lumpsum" element={<LumpsumPage />} />
