@@ -41,6 +41,12 @@ const HomePage = () => {
       icon: <FaUniversity size={40} color="#007bff" />, // Icon for PPF
     },
     {
+      title: 'SWP',
+      description: 'Calculate your monthly withdrawals with a Systematic Withdrawal Plan (SWP)',
+      path: '/swp',
+      icon: <FaHandHoldingUsd size={40} color="#007bff" />, // Icon for SWP
+    },
+    {
       title: 'Retirement',
       description: 'Calculate how much you need for a relaxed retirement',
       path: '/retirement',
